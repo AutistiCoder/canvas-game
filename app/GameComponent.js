@@ -1,7 +1,6 @@
 "use client";
 import { createElement } from "react";
 import Game from "./Game";
-import Player from "./Player";
 import { useRef, useEffect } from "react";
 
 export default function GameComponent() {
@@ -9,14 +8,17 @@ export default function GameComponent() {
 
     useEffect(() => {
         const canvas = canvasRef.current;
+        canvas.tabIndex = 1000;
         if (canvas) {
             console.log(`drawing canvas`);
             const context = canvas.getContext("2d");
-            const player = new Player();
             const game = new Game();
             game.draw(context);
         }
+        
     }, []);
-
-    return <canvas ref={canvasRef} />;
+    return <canvas ref={canvasRef} onKeyDown={(event)=>{
+        event.preventDefault();
+        console.log(`key down: '${event.key}'`);
+    }}/>;
 };
