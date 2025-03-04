@@ -25,7 +25,7 @@ export default class Player {
         // Maintain aspect ratio
         const aspectRatio = player.image.width / player.image.height;
         console.log(`aspect ratio: ${aspectRatio}`);
-        player.image.height = 100;
+        player.image.height = 25;
         player.image.width = player.image.height * aspectRatio;
 
         // Set correct bottom position
