@@ -1,13 +1,20 @@
 import Player from "./Player"
 export default class Game
 {
-    constructor()
+    constructor(player,context)
     {
-        this.player = new Player();
+        this.player = player;
+        this.context = context;
     }
-    draw(context)
+    static async create(context)
     {
-        this.player.draw(context);
-
+        const game = new Game(await Player.create(context),context);
+        return game;
+    }
+    draw(t=0)
+    {
+        console.log("context: ",this.context);
+        this.context.clearRect(0, 0, 800, 600);
+        this.player.draw(t);
     }
 }

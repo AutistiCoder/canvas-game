@@ -4,8 +4,5 @@ import GameComponent from "./GameComponent";
 
 export default function Home() {
   return (
-  <div>
-    <h1>Game</h1>
-    <GameComponent />
-  </div>);
+  <GameComponent />);
 }
