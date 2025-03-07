@@ -33,17 +33,10 @@ export default class Player {
         return player;
     }
 
-    requestAnimationFrame(t) {
-        this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height);
-        this.draw();
-        requestAnimationFrame(t => this.requestAnimationFrame(t));
-    }
-
     jump() {
         if (!this.jumping) {
             this.jumping = true;
             this.velocity = this.v0; // Set initial jump velocity
-            requestAnimationFrame(t => this.requestAnimationFrame(t));
         }
     }
 

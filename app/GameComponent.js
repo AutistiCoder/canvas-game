@@ -6,7 +6,6 @@ import { useRef, useEffect } from "react";
 
 export default function GameComponent() {
     const canvasRef = useRef(null);
-
     useEffect(() => {
         const canvas = canvasRef.current;
         if (canvas) {
@@ -16,6 +15,8 @@ export default function GameComponent() {
             Game.create(context).then((game) => {
                 console.log(`game created`);
                 game.draw(0);
+                game.requestAnimationFrame();
+                console.log(`game animation frame requested`);
                 canvas.addEventListener("keydown",(event)=>{
                 event.preventDefault();
                 console.log(`key down: '${event.key}'`);
